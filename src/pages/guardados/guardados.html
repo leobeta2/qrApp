@@ -6,13 +6,25 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>guardados</ion-title>
+  <ion-navbar color="primay">
+    <ion-title>Historial</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+    <button ion-item
+            *ngFor="let data of historial; let i=index"
+            (click)="abrir_scan(i)">
+            {{data.info}}
+            <p>
+              {{data.tipo}}
+            </p>
+
+    </button>
+  </ion-list>
 
 </ion-content>

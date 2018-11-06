@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {HistorialProvider} from "../../providers/historial/historial";
+import {ScanData} from "../../models/scan-data.model";
 
 
 
@@ -11,11 +12,17 @@ import {HistorialProvider} from "../../providers/historial/historial";
 })
 export class GuardadosPage {
 
+  historial: ScanData[] =[];
+
   constructor(private historialProvider: HistorialProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GuardadosPage');
+    this.historial = this.historialProvider.cargar_historial();
+  }
+
+  abrir_scan(index:number){
+    this.historialProvider.abrir_scan(index);
   }
 
 }
