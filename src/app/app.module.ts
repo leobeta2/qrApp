@@ -3,9 +3,12 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { AgmCoreModule } from '@agm/core';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+
 
 import { MyApp } from './app.component';
 import {GuardadosPage, HomePage, MapaPage, TabsPage} from "../pages/index.paginas";
@@ -24,7 +27,10 @@ import { HistorialProvider } from '../providers/historial/historial';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA-HXVa2jtkGfKtIJwisxgC46RaWqC1xuI'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +47,8 @@ import { HistorialProvider } from '../providers/historial/historial';
     BarcodeScanner,
     InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HistorialProvider
+    HistorialProvider,
+    Contacts
   ]
 })
 export class AppModule {}

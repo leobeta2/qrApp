@@ -31,7 +31,18 @@ export class HomePage {
     console.log('Realizando Escaneo');
 
     if (!this.platform.is('cordova')) {
-      this.historialProvider.agregar_historial("http://google.com")
+      //this.historialProvider.agregar_historial("http://google.com");
+      //this.historialProvider.agregar_historial("geo:9.9976133046533260,-84.006774790335323");
+      this.historialProvider.agregar_historial( `BEGIN:VCARD
+VERSION:2.1
+N:Kent;Clark
+FN:Clark Kent
+ORG:
+TEL;HOME;VOICE:12345
+TEL;TYPE=cell:67890
+ADR;TYPE=work:;;;
+EMAIL:clark@superman.com
+END:VCARD` );
       return;
     }
 
