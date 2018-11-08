@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, Platform } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { HistorialProvider } from "../../providers/historial/historial";
 
@@ -17,7 +18,8 @@ export class HomePage {
               public toastCtrl: ToastController,
               private barcodeScanner: BarcodeScanner,
               private platform: Platform,
-              private historialProvider: HistorialProvider) {
+              private historialProvider: HistorialProvider,
+              private geolocation: Geolocation) {
 
               this.opciones ={
                 //formats:'AZTEC'
@@ -53,12 +55,23 @@ END:VCARD` );
       if(barcodeData.cancelled == false && barcodeData.text!=null){
         this.historialProvider.agregar_historial(barcodeData.text);
       }
+
+      this.geolocation.getCurrentPosition().then((resp) => {
+    // resp.coords.latitude
+    // resp.coords.longitude
+      alert("Datos de latitud y longitud: "+"\n"+
+           resp.coords.latitude + " y "+ resp.coords.longitude);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
      }).catch(err => {
          console.log('Error', err);
          this.resultado = err;
      }
    );
      this.mensajeData(this.resultado);
+     this.ubicacion();
   }
 
   mensajeData(result) {
@@ -68,4 +81,8 @@ END:VCARD` );
           "Cancelled: " + result.cancelled);
  }
 
+ ubicacion(){
+
+
+  }
 }

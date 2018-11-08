@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {ScanData} from "../../models/scan-data.model";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import {ModalController, Platform, ToastController} from "ionic-angular";
 import {MapaPage} from "../../pages/mapa/mapa";
@@ -15,7 +16,8 @@ export class HistorialProvider {
               private modalCtrl: ModalController,
               private contacts: Contacts,
               private platform: Platform,
-              private toastController: ToastController) {
+              private toastController: ToastController,
+              private geolocation: Geolocation) {
 
   }
 
@@ -36,7 +38,7 @@ export class HistorialProvider {
         this.crear_contacto(ScanData.info);
       break;
       default:
-        console.error("Tipo no soportado")
+        console.error("Tipo no soportado");
     }
   }
 
@@ -60,7 +62,7 @@ export class HistorialProvider {
     contact.save().then(
       ()=> this.crear_toast("Contacto" + nombre + "creado!"),
       (error)=>this.crear_toast("Error: "+ error)
-    )
+    );
   }
 
   private crear_toast(mensaje:string){
