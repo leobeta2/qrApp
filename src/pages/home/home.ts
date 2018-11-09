@@ -3,7 +3,11 @@ import { NavController, ToastController, Platform } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { CodigoPage } from "../index.paginas";
+
 import { HistorialProvider } from "../../providers/historial/historial";
+
+import bwipjs from '../../../node_modules/bwip-angular2';
 
 @Component({
   selector: 'page-home',
@@ -13,6 +17,8 @@ export class HomePage {
 
   resultado:any;
   opciones:any;
+  cadena: any;
+  cadena2: any;
 
   constructor(public navCtrl: NavController,
               public toastCtrl: ToastController,
@@ -71,7 +77,7 @@ END:VCARD` );
      }
    );
      this.mensajeData(this.resultado);
-     this.ubicacion();
+
   }
 
   mensajeData(result) {
@@ -81,8 +87,16 @@ END:VCARD` );
           "Cancelled: " + result.cancelled);
  }
 
- ubicacion(){
 
 
+  generador(cadena: string){
+    let cadena1 = 'https://barcode.tec-it.com/barcode.ashx?data='+ cadena +'&code=Aztec&dpi=96&dataseparator=';
+    console.log(cadena1);
+    console.log(cadena);
+    this.navCtrl.push(CodigoPage, cadena1);
+  }
+
+  generador2(cadena2:string){
+    this.navCtrl.push(CodigoPage, cadena2);
   }
 }

@@ -8,8 +8,35 @@
 
 <ion-content padding>
 
-  <button  ion-button block (click)="scan()" color="primary">
-    Realizar Scan
-  </button>
+  <ion-list >
+      
+        <button  ion-button block (click)="scan()" color="primary">
+          Realizar Scan
+        </button>     
+      <h4>Generación de Código Aztec</h4>
+      <ion-item>
+        <ion-label floating>Ingrese texto a codificar: </ion-label>
+        <ion-input type="text" #cadena></ion-input>
+      </ion-item>
+
+      <button ion-button block (click)="generador(cadena.value)" color="secondary">
+        Generador
+      </button>
+
+      <ion-item>
+        <ion-label floating>Ingrese texto a codificar2: </ion-label>
+        <ion-input type="text" #cadena2></ion-input>
+      </ion-item>
+      <button ion-button block (click)="generador2(cadena2.value)" color="warning">
+          Generador
+        </button>
+
+      
+        
+  </ion-list>  
+  
+  
+
+
 
 </ion-content>

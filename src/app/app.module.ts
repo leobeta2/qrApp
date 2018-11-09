@@ -13,7 +13,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 
 import { MyApp } from './app.component';
-import {GuardadosPage, HomePage, MapaPage, TabsPage} from "../pages/index.paginas";
+import {GuardadosPage, HomePage, MapaPage, TabsPage, CodigoPage} from "../pages/index.paginas";
 
 
 //servicios
@@ -25,7 +25,8 @@ import { HistorialProvider } from '../providers/historial/historial';
     GuardadosPage,
     HomePage,
     MapaPage,
-    TabsPage
+    TabsPage,
+    CodigoPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,8 @@ import { HistorialProvider } from '../providers/historial/historial';
     GuardadosPage,
     HomePage,
     MapaPage,
-    TabsPage
+    TabsPage,
+    CodigoPage
   ],
   providers: [
     StatusBar,
